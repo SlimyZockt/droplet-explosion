@@ -4,12 +4,8 @@ import cv2
 import numpy as np
 import logging
 import sys
-# if len(sys.argv) > 1:
-# from Data import SourceData
-# from vision import create_mask
-# else:
-from Scripts.VideoProcessing.Data import SourceData
-from Scripts.VideoProcessing.vision import create_mask
+from .Data import SourceData
+from .vision import create_mask
 
 logging.basicConfig(filename="newfile.log",
                     format='%(asctime)s %(message)s',

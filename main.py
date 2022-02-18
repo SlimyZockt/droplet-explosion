@@ -19,7 +19,7 @@ def _get_file_from_dir(path: str, extentions: tuple[str]) -> list[str]:
 @click.argument('video_path')
 @click.option("-D", "--directory", default=False, is_flag=True,
               help="Use directory for processing multiple videos")
-@click.option("-d", "--debgug", default=False,
+@click.option("-d", "--debgug", default=False, is_flag=True,
               help="Use directory for processing multiple videos")
 def main(video_path, directory, debgug):
     files: list[str] = []
