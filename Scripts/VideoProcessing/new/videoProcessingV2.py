@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import logging
-from .uitl import create_black_img
+from ..vision import create_mask
 from time import time
 
 
@@ -42,9 +42,19 @@ def generate_data_from_src(path: str, debug: bool, frame_skip_rate: int = 5):
     # TODO: process frame and create mask
 
     def process_frame(frame: np.ndarray):
-        mask = create_black_img(width=width, height=height)
-        
-        return frame
+        mask = create_mask(frame.copy(), background_subtractor=bg_sub)
+
+        contours, _ = cv2.findContours(
+                mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        timestamp: float = cap.get(
+            cv2.CAP_PROP_POS_MSEC)
+
+        return {
+            'droplet_count': len(contours),
+            'time_in_s': timestamp/1000,
+            'added_size': np.sum(mask == 255)
+        }
 
     while (cap.isOpened()):
         ret, og_frame = cap.read()
