@@ -1,4 +1,6 @@
-from Scripts.processing import get_data, create_diagrams
+from multiprocessing.dummy import Array
+from Scripts.processing import create_diagrams
+from Scripts.VideoProcessing.videoProcessing import generate_data_from_src
 import click
 import os
 import pandas as pd
@@ -31,7 +33,8 @@ def main(video_path, directory, debgug):
     click.echo(f"Video Files: {files}!")
 
     for file in files:
-        data = get_data(file)
+        data = generate_data_from_src(file, debug=debgug)
+        print(data)
         df = pd.DataFrame(data=data)
         # remove last row
         df = df.iloc[:-3]

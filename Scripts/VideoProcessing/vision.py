@@ -12,14 +12,14 @@ def _mask_form_color(frame: np.ndarray) -> np.ndarray:
     return mask
 
 
-def create_mask(frame: np.ndarray, settings: list[int], background_subtractor) -> np.ndarray:
+def create_mask(frame: np.ndarray, background_subtractor) -> np.ndarray:
     # creates black img with the shape of frame
     shape = (frame.shape[0], frame.shape[1], 1)
     black_img = np.zeros(shape, dtype="uint8")
     # uses Canny Edge Detection to create a mask
-    # removed_bg = background_subtractor.apply(frame) if (3 in settings) else black_img
-    edge_mask = cv2.Canny(frame, 42, 146) if (1 in settings) else black_img
-    color_mask = _mask_form_color(frame) if (0 in settings) else black_img
+    # removed_bg = bacqkground_subtractor.apply(frame) if (3 in settings) else black_img
+    edge_mask = cv2.Canny(frame, 42, 146)
+    color_mask = _mask_form_color(frame)
 
     mask = cv2.add(edge_mask, color_mask)
     # mask = cv2.add(mask, removed_bg)

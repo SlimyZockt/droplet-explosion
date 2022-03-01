@@ -1,16 +1,7 @@
-from turtle import st, title
-import Scripts.VideoProcessing.VideoProcessing as VideoProcessing
-from Scripts.VideoProcessing.Data import SourceData
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
 
-
-def get_data(file: str) -> dict[str, list]:
-    source_data: SourceData = VideoProcessing.setup(file, [0, 1])
-    data = VideoProcessing.process(source_data, True)
-
-    return data
 
 
 def _create_plot(ax: Axes, x, y, plt_title: str, label: tuple[str, str]):
