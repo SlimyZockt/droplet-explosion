@@ -1,6 +1,6 @@
 from multiprocessing.dummy import Array
 from Scripts.processing import create_diagrams
-from Scripts.VideoProcessing.videoProcessing import generate_data_from_src
+from Scripts.VideoProcessing.VideoProcessing import generate_data_from_src
 import click
 import os
 import pandas as pd
