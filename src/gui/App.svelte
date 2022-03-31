@@ -26,24 +26,31 @@
       cache: 'no-cache'
     }).then(data => {
       console.log(data)
-      return data.blob();
+      return data.json();
     })
     .then(res => {
-      files = URL.createObjectURL(res)
+      files = res.files
       console.log(files);
     })
-    // .catch(err => console.log(err))
+    .catch(err => console.log(err))
+    // PathStore.set(files)
     // console.log(files)
     // let url = `${files.at(0).replaceAll(' ', '%20').replace(/\\/g, '/')}`;
-    // PathStore.set(files)
     // // console.log(url)
     // // console.log(files)
-    // data = window.pywebview.api.start_analyse([files.at(1)], true)
-    // data.then((res) => {
-    //   // console.log(res)
-    //   video_data = res
-    // }
-    // )
+    data = fetch(`/analyse/video`, {
+      method: 'post',
+      cache: 'no-cache',
+      body: JSON.stringify({
+        files: files,
+        debug: true
+      })
+    })
+    data.then((res) => {
+        video_data = res
+      console.log(res)
+    }
+    )
   };
 
 </script>

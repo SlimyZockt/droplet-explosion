@@ -1,9 +1,13 @@
-import os
 import json
-from functools import wraps
+import os
 
+import matplotlib.pyplot as plt
+import pandas as pd
 import webview
-from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask import Flask, render_template, send_from_directory, request
+
+from ..util import Util
+from ..VideoProcessing.VideoProcessing import generate_data_from_src
 
 gui_dir = '../../../../public'
 
@@ -47,10 +51,39 @@ def choose_path():
     files = webview.windows[0].create_file_dialog(
         webview.OPEN_DIALOG, allow_multiple=False, file_types=file_types)
     
-
     if files and len(files) > 0:
         response = {'status': 'ok', 'files': files}
     else:
         response = {'status': 'cancel'}
 
-    return send_from_directory('UPLOAD_FOLDER', files[0])
+    return response
+    # return send_from_directory('UPLOAD_FOLDER', files[0])
+
+
+@app.route('/analyse/video', methods=['POST'])
+def analyse_video():
+
+    files = request.form['files']
+    debug = request.form['debug']
+
+    print(f"Video Files: {files}!")
+    file = files[0]
+    data = generate_data_from_src(file, debug=debug)
+    print(data)
+    df: pd.DataFrame = pd.DataFrame(data=data)
+    # remove last 3 row
+    df = df.iloc[:-3]
+    Util.create_diagrams(df)
+    file_name = os.path.basename(file)
+    file_name = os.path.splitext(file_name)[0]
+
+    out_path = f"output/{file_name}"
+    if not os.path.exists(out_path):
+        os.makedirs(out_path)
+    plt.savefig(f"{out_path}/{file_name}.png")
+    df.to_csv(f"{out_path}/{file_name}.csv")
+
+    res = df.to_json()
+    parsed = json.loads(res)
+
+    return parsed

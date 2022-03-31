@@ -35461,7 +35461,7 @@ var app = (function () {
     	return block;
     }
 
-    // (53:6) {:then data}
+    // (59:6) {:then data}
     function create_then_block(ctx) {
     	let button;
     	let current;
@@ -35512,14 +35512,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(53:6) {:then data}",
+    		source: "(59:6) {:then data}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:8) <Button class="me-2" on:click={() => get_video_path()}>
+    // (60:8) <Button class="me-2" on:click={() => get_video_path()}>
     function create_default_slot_7(ctx) {
     	let t;
 
@@ -35539,14 +35539,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_7.name,
     		type: "slot",
-    		source: "(54:8) <Button class=\\\"me-2\\\" on:click={() => get_video_path()}>",
+    		source: "(60:8) <Button class=\\\"me-2\\\" on:click={() => get_video_path()}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:19)           <Spinner color={'secondary'}
+    // (57:19)           <Spinner color={'secondary'}
     function create_pending_block(ctx) {
     	let spinner;
     	let current;
@@ -35583,18 +35583,19 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(51:19)           <Spinner color={'secondary'}",
+    		source: "(57:19)           <Spinner color={'secondary'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (49:2) <Navbar color={"dark"} dark>
+    // (55:2) <Navbar color={"dark"} dark>
     function create_default_slot_6(ctx) {
     	let p;
     	let t1;
     	let await_block_anchor;
+    	let promise;
     	let current;
 
     	let info = {
@@ -35605,11 +35606,11 @@ var app = (function () {
     		pending: create_pending_block,
     		then: create_then_block,
     		catch: create_catch_block,
-    		value: 2,
+    		value: 1,
     		blocks: [,,,]
     	};
 
-    	handle_promise(/*data*/ ctx[2], info);
+    	handle_promise(promise = /*data*/ ctx[1], info);
 
     	const block = {
     		c: function create() {
@@ -35619,7 +35620,7 @@ var app = (function () {
     			await_block_anchor = empty();
     			info.block.c();
     			attr_dev(p, "class", "navbar-text");
-    			add_location(p, file, 49, 6, 1409);
+    			add_location(p, file, 55, 6, 1503);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -35632,7 +35633,11 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			update_await_block_branch(info, ctx, dirty);
+    			info.ctx = ctx;
+
+    			if (dirty & /*data*/ 2 && promise !== (promise = /*data*/ ctx[1]) && handle_promise(promise, info)) ; else {
+    				update_await_block_branch(info, ctx, dirty);
+    			}
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -35661,14 +35666,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_6.name,
     		type: "slot",
-    		source: "(49:2) <Navbar color={\\\"dark\\\"} dark>",
+    		source: "(55:2) <Navbar color={\\\"dark\\\"} dark>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (48:6) <Col>
+    // (54:6) <Col>
     function create_default_slot_5(ctx) {
     	let navbar;
     	let current;
@@ -35694,7 +35699,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const navbar_changes = {};
 
-    			if (dirty & /*$$scope*/ 32) {
+    			if (dirty & /*$$scope, data*/ 34) {
     				navbar_changes.$$scope = { dirty, ctx };
     			}
 
@@ -35718,14 +35723,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_5.name,
     		type: "slot",
-    		source: "(48:6) <Col>",
+    		source: "(54:6) <Col>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (47:4) <Row>
+    // (53:4) <Row>
     function create_default_slot_4(ctx) {
     	let col;
     	let current;
@@ -35749,7 +35754,7 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const col_changes = {};
 
-    			if (dirty & /*$$scope*/ 32) {
+    			if (dirty & /*$$scope, data*/ 34) {
     				col_changes.$$scope = { dirty, ctx };
     			}
 
@@ -35773,14 +35778,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_4.name,
     		type: "slot",
-    		source: "(47:4) <Row>",
+    		source: "(53:4) <Row>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:6) <Col xs="3">
+    // (68:6) <Col xs="3">
     function create_default_slot_3(ctx) {
     	let settings;
     	let current;
@@ -35812,14 +35817,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_3.name,
     		type: "slot",
-    		source: "(62:6) <Col xs=\\\"3\\\">",
+    		source: "(68:6) <Col xs=\\\"3\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (65:6) <Col class="max-width">
+    // (71:6) <Col class="max-width">
     function create_default_slot_2(ctx) {
     	let viewtabs;
     	let current;
@@ -35837,7 +35842,11 @@ var app = (function () {
     			mount_component(viewtabs, target, anchor);
     			current = true;
     		},
-    		p: noop$1,
+    		p: function update(ctx, dirty) {
+    			const viewtabs_changes = {};
+    			if (dirty & /*video_data*/ 1) viewtabs_changes.video_data = /*video_data*/ ctx[0];
+    			viewtabs.$set(viewtabs_changes);
+    		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(viewtabs.$$.fragment, local);
@@ -35856,14 +35865,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_2.name,
     		type: "slot",
-    		source: "(65:6) <Col class=\\\"max-width\\\">",
+    		source: "(71:6) <Col class=\\\"max-width\\\">",
     		ctx
     	});
 
     	return block;
     }
 
-    // (61:4) <Row>
+    // (67:4) <Row>
     function create_default_slot_1(ctx) {
     	let col0;
     	let t;
@@ -35910,7 +35919,7 @@ var app = (function () {
     			col0.$set(col0_changes);
     			const col1_changes = {};
 
-    			if (dirty & /*$$scope*/ 32) {
+    			if (dirty & /*$$scope, video_data*/ 33) {
     				col1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -35938,14 +35947,14 @@ var app = (function () {
     		block,
     		id: create_default_slot_1.name,
     		type: "slot",
-    		source: "(61:4) <Row>",
+    		source: "(67:4) <Row>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (46:2) <Container fluid>
+    // (52:2) <Container fluid>
     function create_default_slot(ctx) {
     	let row0;
     	let t;
@@ -35983,14 +35992,14 @@ var app = (function () {
     		p: function update(ctx, dirty) {
     			const row0_changes = {};
 
-    			if (dirty & /*$$scope*/ 32) {
+    			if (dirty & /*$$scope, data*/ 34) {
     				row0_changes.$$scope = { dirty, ctx };
     			}
 
     			row0.$set(row0_changes);
     			const row1_changes = {};
 
-    			if (dirty & /*$$scope*/ 32) {
+    			if (dirty & /*$$scope, video_data*/ 33) {
     				row1_changes.$$scope = { dirty, ctx };
     			}
 
@@ -36018,7 +36027,7 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(46:2) <Container fluid>",
+    		source: "(52:2) <Container fluid>",
     		ctx
     	});
 
@@ -36043,7 +36052,7 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			create_component(container.$$.fragment);
-    			add_location(main, file, 44, 0, 1318);
+    			add_location(main, file, 50, 0, 1412);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -36056,7 +36065,7 @@ var app = (function () {
     		p: function update(ctx, [dirty]) {
     			const container_changes = {};
 
-    			if (dirty & /*$$scope*/ 32) {
+    			if (dirty & /*$$scope, video_data, data*/ 35) {
     				container_changes.$$scope = { dirty, ctx };
     			}
 
@@ -36104,15 +36113,28 @@ var app = (function () {
 
     		await fetch("/choose/path", { method: "post", cache: 'no-cache' }).then(data => {
     			console.log(data);
-    			return data.blob();
+    			return data.json();
     		}).then(res => {
-    			files = URL.createObjectURL(res);
+    			files = res.files;
     			console.log(files);
+    		}).catch(err => console.log(err));
+
+    		// PathStore.set(files)
+    		// console.log(files)
+    		// let url = `${files.at(0).replaceAll(' ', '%20').replace(/\\/g, '/')}`;
+    		// // console.log(url)
+    		// // console.log(files)
+    		$$invalidate(1, data = fetch(`/analyse/video`, {
+    			method: 'post',
+    			cache: 'no-cache',
+    			body: JSON.stringify({ files, debug: true })
+    		}));
+
+    		data.then(res => {
+    			$$invalidate(0, video_data = res);
+    			console.log(res);
     		});
-    	}; // .catch(err => console.log(err))
-    	// console.log(files)
-    	// let url = `${files.at(0).replaceAll(' ', '%20').replace(/\\/g, '/')}`;
-    	// PathStore.set(files)
+    	};
 
     	const writable_props = [];
 
@@ -36144,14 +36166,14 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('is_loading' in $$props) is_loading = $$props.is_loading;
     		if ('video_data' in $$props) $$invalidate(0, video_data = $$props.video_data);
-    		if ('data' in $$props) $$invalidate(2, data = $$props.data);
+    		if ('data' in $$props) $$invalidate(1, data = $$props.data);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [video_data, get_video_path, data, click_handler];
+    	return [video_data, data, get_video_path, click_handler];
     }
 
     class App extends SvelteComponentDev {

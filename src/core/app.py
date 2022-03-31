@@ -31,32 +31,5 @@ class Api:
         p = Path(result[0])
         return [p.as_uri(), result[0]]
 
-    def start_analyse(self, files: list[str], debug: bool):
-        # if directory:
-        #     files = Util.get_file_from_dir()
-        #     # click.echo(f"Video Path Dir:, {dir}!")
-        # else:
-        #     files = [video_path]
-        print(f"Video Files: {files}!")
 
-        file = files[0]
-        data = generate_data_from_src(file, debug=debug)
-        print(data)
-        df: pd.DataFrame = pd.DataFrame(data=data)
-        # remove last 3 row
-        df = df.iloc[:-3]
-        Util.create_diagrams(df)
-        file_name = os.path.basename(file)
-        file_name = os.path.splitext(file_name)[0]
-
-        out_path = f"output/{file_name}"
-        if not os.path.exists(out_path):
-            os.makedirs(out_path)
-        plt.savefig(f"{out_path}/{file_name}.png")
-        df.to_csv(f"{out_path}/{file_name}.csv")
-
-        res = df.to_json()
-        parsed = json.loads(res)
-        
-        return parsed
         # return data
