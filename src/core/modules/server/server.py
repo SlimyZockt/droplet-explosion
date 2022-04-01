@@ -45,12 +45,14 @@ def choose_path():
     '''
     Invoke a folder selection dialog here
     :return:
-    '''
+    ''' 
+    if request.method != 'POST':
+        return {}
     file_types = ['Video Files (*.mp4;*.avi;*.mog)']
-    
+
     files = webview.windows[0].create_file_dialog(
         webview.OPEN_DIALOG, allow_multiple=False, file_types=file_types)
-    
+
     if files and len(files) > 0:
         response = {'status': 'ok', 'files': files}
     else:
@@ -62,6 +64,9 @@ def choose_path():
 
 @app.route('/analyse/video', methods=['POST'])
 def analyse_video():
+
+    if request.method != 'POST':
+        return {}
 
     files = request.form['files']
     debug = request.form['debug']
